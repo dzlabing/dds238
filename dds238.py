@@ -106,6 +106,8 @@ def run():
     # The meter does not understand the 'write sigle register' function code (06h), only the 'write multiple registers' function code (10h).
     # Reset fails
     # request = client.write_registers(address=0x0,values=[0x0,0x0],unit=10,slave=1)
+
+    # set address - code https://www.domoticz.com/wiki/Python_-_Read-out_of_DDS238_kWh-meter_and_upload_to_Domoticz_and_to_PVOutput#More_than_1_kWh-meter_type_DDS238-1ZN_or_other_kWH-meters_in_the_configuration
     
     client.close()
 
