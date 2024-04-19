@@ -7,7 +7,7 @@ Example output:<p>
 <code>
 Registers:  [0, 7133, 513, 0, 0, 0, 0, 0, 0, 2399, 0, 4733, 2306, 62, 132, 65534, 917, 4999, 0, 0, 0, 257, 0, 0, 0, 0, 0]
 Total energy 71.33  kWh
-Exported energy  23.99  kWh
+Exported energy  47.34  kWh
 Imported energy  23.99  kWh
 Voltage  230.6  V
 Current  0.62  A

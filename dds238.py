@@ -34,7 +34,7 @@ def run():
     print("Registers: ",request.registers)
 
     # Total energy 71.33  kWh
-    # Exported energy  23.99  kWh
+    # Exported energy  47.34  kWh
     # Imported energy  23.99  kWh
     # Voltage  230.4  V
     # Current  0.62  A
@@ -56,7 +56,7 @@ def run():
     d = BinaryPayloadDecoder.fromRegisters(a,byteorder=Endian.BIG, wordorder=Endian.BIG)
     print("Exported energy ", d.decode_32bit_uint()/100, " kWh");
     # imported energy, unsinged dword 32 bits
-    a = request.registers[0x8:0xa]
+    a = request.registers[0xa:0xb]
     d = BinaryPayloadDecoder.fromRegisters(a,byteorder=Endian.BIG, wordorder=Endian.BIG)
     print("Imported energy ",d.decode_32bit_uint()/100, " kWh");
     # voltage, unsigned word 16 bits
