@@ -15,5 +15,5 @@ Reactive power  -2  VAr
 Power factor  0.917
 Frequency 49.99  Hz
 Modbus address  1
-BitrateEnum  1
-Relais  0
+Bitrate  9600 bit/s
+Relais  off

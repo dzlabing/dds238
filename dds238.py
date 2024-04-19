@@ -43,8 +43,9 @@ def run():
     # Power factor  0.917
     # Frequency 50.0  Hz
     # Modbus address  1
-    # BitrateEnum  1
-    # Relais  0
+    # Bitrate  9600 bit/s
+    # Relais  off
+
 
     # total energy - byte order big endian, unsinged dword 32bits
     a = request.registers[0x0:0x2]
@@ -84,10 +85,24 @@ def run():
     print("Frequency" , d.decode_16bit_int()/100," Hz");
     # address, signed byte, 8 bits    
     print("Modbus address ", request.registers[0x15]>>0x8, "");
-    # bit rate enum (1=9600,2=4800,3=2400,4=1200), 8 bits
-    print("BitrateEnum ", request.registers[0x15]&0xf,"");
+    # bit rate enum 
+    bitrate_enum = {
+        1: 9600,
+        2: 4800,
+        3: 2400,
+        4: 1200
+    }  
+    a = request.registers[0x15:0x16]
+    if a[0]&0xf in bitrate_enum:
+        print("Bitrate ", bitrate_enum[a[0]&0xf],"bit/s");
     # relais (0=off, 1=on) - only some models
-    print("Relais ", request.registers[0x1a],"");
+    relais_enum = {
+        0: "off",
+        1: "on"
+    }  
+    a = request.registers[0x1a:0x1b]
+    if a[0] in relais_enum:    
+        print("Relais ", relais_enum[a[0]],"");
     # The meter does not understand the 'write sigle register' function code (06h), only the 'write multiple registers' function code (10h).
     # Reset fails
     # request = client.write_registers(address=0x0,values=[0x0,0x0],unit=10,slave=1)
